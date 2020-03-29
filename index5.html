@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1 v-if="awesome">Vue is awesome!</h1>
+        <h1 v-else>Oh no 😢</h1>
+
+        <template v-if='ok'>
+            <h1>Oh yeah</h1>
+            <h1>Oh yeah</h1>
+            <h1>Oh yeah</h1>
+        </template>
+
+        <div v-if="type == 'A'">
+            A
+        </div>
+        <div v-else-if="type == 'B'">
+            B
+        </div>
+        <div v-else-if="type == 'C'">
+            C
+        </div>
+        <div v-else>
+            OTHER
+        </div>
+
+        <template v-if="loginType == 'username'">
+            <label>Username</label>
+            <input placeholder="请输入用户名">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input placeholder="请输入邮件地址">
+        </template>
+        <button @click='btn'>Change Login Type</button>
+        <br />
+        <template v-if="loginType == 'username'">
+            <label>Username</label>
+            <input placeholder="请输入用户名" key="username-imput">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input placeholder="请输入邮件地址" key="email-imput">
+        </template>
+        <button @click='btn'>Change Login Type</button>
+
+        <h1 v-show="show">v-show</h1>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            awesome: true,
+            ok: false,
+            type: 'A',
+            loginType: 'username',
+            show: true
+        },
+        methods: {
+            btn: function () {
+                if (this.loginType != 'username') {
+                    this.loginType = 'username';
+                }
+                else {
+                    this.loginType = 1;
+                }
+            }
+        }
+    });
+</script>
+
+</html>

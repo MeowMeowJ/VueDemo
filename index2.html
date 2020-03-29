@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+
+    <div id="example">
+        <!-- <span>Message: {{msg}}</span>
+        <br />
+        <span v-once>这个不会改变：{{msg}}</span> -->
+
+        <p>Using mustaches: {{rawHtml}}</p>
+        <p v-html='rawHtml'></p>
+        <div v-bind:class="color">TEST</div>
+        <a :[attribute]='url'>baidu</a>
+        <div v-on:click='click1'>
+            <div @click='click2'>
+                click me
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    //var data = {a: 1}
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            msg: 'Hello!',
+            rawHtml: '<span style="color:red">This should be red.</span>',
+            color: 'red',
+            url: "http://www.baidu.com/",
+            attribute: 'href'
+        },
+        methods: {
+            click1: function () {
+                console.log("Click1111");
+            },
+            click2: function () {
+                console.log("Click2222");
+            }
+        }
+    });
+
+</script>
+<style>
+    .red {color: red;}
+    .blue {color: blue; font-size: 40px;}
+</style>
+</html>

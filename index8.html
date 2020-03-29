@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="app1">
+        <input v-model="message" placeholder="edit me">
+        <p>Message is: {{ message }}</p>
+        <br />
+        <span>Multiline message is:</span>
+        <p style="white-space: pre-line;">{{ multilineMessage }}</p>
+        <textarea v-model='multilineMessage' placeholder="Add multiple lines"></textarea>
+    </div>
+    <br />
+    <div id="app2">
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{checked}}</label>
+    </div>
+    <div id="app2_1">
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="jonh" value="Jonh" v-model="checkedNames">
+        <label for="jonh">Jonh</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
+        <br />
+        <span>Checked Names: {{checkedNames}}</span>
+    </div>
+    <br />
+    <div id="app3">
+        <input type="radio" id="one" value="One" v-model='picked'>
+        <label for="one">one</label>
+        <br />
+        <input type="radio" id="two" value="Two" v-model='picked'>
+        <label for='two'>Two</label>
+        <br />
+        <span>Picked: {{picked}}</span>
+    </div>
+    <br />
+    <div id="app4">
+        <select v-model='selected'>
+            <option disabled value="">请选择</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <span>Selected: {{selected}}</span>
+    </div>
+    <br />
+    <div id="app5">
+        <select v-model='selected' multiple style="width: 50px;">
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+        </select>
+        <span>Selected: {{selected}}</span>
+    </div>
+    <br />
+    <div id='app6'>
+        <select v-model='selected'>
+            <option v-for='option in options' v-bind:value='option.value'>
+                {{option.text}}
+            </option>
+        </select>
+        <span>Selected: {{selected}}</span>
+    </div>
+
+</body>
+<script>
+    // 文本
+    var vm1 = new Vue({
+        el: '#app1',
+        data: {
+            message: '',
+            multilineMessage: ''
+        }
+    });
+    // 复选框
+    var vm2 = new Vue({
+        el: '#app2',
+        data: {
+            checked: false
+        }
+    });
+    
+    var vm2_1 = new Vue({
+        el: '#app2_1',
+        data: {
+            checkedNames: []
+        }
+    });
+    // 单选按钮
+    var vm3 = new Vue({
+        el: '#app3',
+        data: {
+            picked: ''
+        }
+    });
+    // 下拉选择框
+    var vm4 = new Vue({
+        el: '#app4',
+        data: {
+            selected: ''
+        }
+    });
+    // 长按拖拽就能选中，还能多选，按住ctrl键也可以
+    var vm5 = new Vue({
+        el: '#app5',
+        data: {
+            selected: ''
+        }
+    });
+    // 用 v-for 渲染的动态选项：选One则把A添加到属性selected，选Two则B......
+    var vm6 = new Vue({
+        el: '#app6',
+        data: {
+            selected: 'A', // 默认选中A
+            options: [
+                {text: 'One', value: 'A'},
+                {text: 'Two', value: 'B'},
+                {text: 'Three', value: 'C'}
+            ]
+        }
+    });
+</script>
+
+</html>
